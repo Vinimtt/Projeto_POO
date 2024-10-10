@@ -1,12 +1,11 @@
 package Clinica;
-import java.util.Date;
 
 public class Consulta {
     private Paciente paciente;
     private Medico medico;
-    private Date Data;
+    private String Data;
 
-    public Consulta(Paciente paciente, Medico medico, Date Data){
+    public Consulta(Paciente paciente, Medico medico, String Data){
         this.paciente = paciente;
         this.medico = medico;
         this.Data = Data; 
@@ -20,7 +19,7 @@ public class Consulta {
         return medico;
     }
 
-    public Date getData() {
+    public String getData() {
         return Data;
     }
 
@@ -32,7 +31,7 @@ public class Consulta {
         this.medico = medico;
     }
 
-    public void setData(Date Data) {
+    public void setData(String Data) {
         this.Data = Data;
     }
 
