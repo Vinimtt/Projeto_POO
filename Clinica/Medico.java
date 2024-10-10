@@ -1,47 +1,46 @@
 package Clinica;
-public class Medico {
-    private String nomeMedico;
-    private int CRM;
-    private boolean Disponivel;
 
+import javax.swing.*;
+import java.awt.*;
+import java.util.List;
 
-    public Medico(String nomeMedico, int CRM, boolean Disponivel){
-        this.nomeMedico = nomeMedico;
-        this.CRM = CRM;
-        this.Disponivel = true;
-    }
+public class RelatorioGUI {
 
-    public int getCRM() {
-        return CRM;
-    }
+    private static JTextArea textArea;
 
-    public boolean isDisponivel(){
-        return Disponivel;
-    }
+    public static void mostrarRelatorio(List<Consulta> consultas) {
+        // Criando o JFrame para a janela
+        JFrame frame = new JFrame("Relatório de Consultas");
+        frame.setSize(500, 500);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-    public String getNomeMedico() {
-        return nomeMedico;
-    }
+        // JTextArea para mostrar as informações
+        textArea = new JTextArea();
+        textArea.setEditable(false);
 
-    public void setCRM(int cRM) {
-        CRM = cRM;
-    }
+        // Scroll para o JTextArea
+        JScrollPane scrollPane = new JScrollPane(textArea);
+        frame.add(scrollPane, BorderLayout.CENTER);
 
-    public void setDisponivel(boolean Disponivel) {
-        this.Disponivel = Disponivel;
-    }
+        // Tornando a janela visível
+        frame.setVisible(true);
 
-    public void setNomeMedico(String nomeMedico) {
-        this.nomeMedico = nomeMedico;
-    }
-
-    public void Disponivel(boolean Disponivel){
-        if(Disponivel == true){
-            System.out.println("Medico está disponível!");
+        // Exibindo o relatório das consultas
+        StringBuilder relatorio = new StringBuilder("Consultas:\n");
+        for (Consulta c : consultas) {
+            relatorio.append("Paciente: ").append(c.getPaciente().getNomePaciente())
+                    .append(" | Idade: ").append(c.getPaciente().getIdade())
+                    .append(" | Tipo sanguíneo: ").append(c.getPaciente().getTipoSanguineo()).append("\n");
+            relatorio.append("Médico: ").append(c.getMedico().getNomeMedico())
+                    .append(" | CRM: ").append(c.getMedico().getCRM()).append("\n");
+            relatorio.append("Data: ").append(c.getData()).append("\n\n");
         }
-        else{
-            System.out.println("Medico indisponivel!");;
-        }
+
+        // Adiciona o relatório ao JTextArea
+        textArea.setText(relatorio.toString());
     }
 
+    public static void exibirMensagem(String mensagem) {
+        textArea.append(mensagem + "\n");
+    }
 }
