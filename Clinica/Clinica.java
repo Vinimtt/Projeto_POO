@@ -1,7 +1,6 @@
 package Clinica;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Clinica {
@@ -25,7 +24,7 @@ public class Clinica {
         medicos.add(medico);
     }
 
-    public void addConsulta(Paciente paciente, Medico medico, Date data){
+    public void addConsulta(Paciente paciente, Medico medico, String data){
         Consulta consulta = new Consulta(paciente, medico, data);
         consultas.add(consulta);
     }
@@ -33,7 +32,7 @@ public class Clinica {
     public void searchPaciente(Paciente paciente){
         for(Paciente paciente2: pacientes){
             if(paciente2.equals(paciente)){
-                System.out.println(paciente.getNomePaciente() + " Encontrado");
+                RelatorioGUI.exibirMensagem(paciente.getNomePaciente() + " Achado");
             }
         }
     }
@@ -45,15 +44,24 @@ public class Clinica {
     public void searchTipoSanguineo(String a){
         for(Paciente pacientea: pacientes){
             if(pacientea.getTipoSanguineo().equals(a)){
-                System.out.println(pacientea.getNomePaciente() + " Pode doar");
+                RelatorioGUI.exibirMensagem(pacientea.getNomePaciente() + " Pode doar");
             }
         }
     }
 
     public void searchDisponivel(Medico medico){
-        
-    }
-
+        boolean disponivel = true;
+        for (Consulta consulta : consultas) {
+            if (consulta.getMedico().equals(medico)) {
+                disponivel = false;
+                break;
+            }
+        }
     
-
-}
+        if (disponivel) {
+            RelatorioGUI.exibirMensagem("Médico " + medico.getNomeMedico() + " está disponível.");
+        } else {
+            RelatorioGUI.exibirMensagem("Médico " + medico.getNomeMedico() + " está indisponível.");
+        }
+    }   
+    }
