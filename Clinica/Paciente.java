@@ -35,9 +35,4 @@ public class Paciente {
         this.tipoSanguineo = tipoSanguineo;
     }
 
-    public void agendar(){
-        
-    }
-
-
 }
