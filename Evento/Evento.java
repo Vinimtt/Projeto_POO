@@ -17,7 +17,7 @@ public class Evento {
         this.local = local;
         this.capacidadeMaxima = capacidadeMaxima;
         this.participantes = new ArrayList<>();
-        eventos.add(this); // Adiciona automaticamente o evento à lista estática de eventos
+        eventos.add(this); 
     }
 
     // Métodos de acesso
@@ -72,7 +72,7 @@ public class Evento {
     }
     public static Evento eventoMaisVisitado() {
         if (eventos.isEmpty()) {
-            return null;  // Retorna null se não houver eventos
+            return null;  
         }
 
         Evento maisVisitado = eventos.get(0);
