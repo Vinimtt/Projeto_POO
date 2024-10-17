@@ -58,10 +58,12 @@ public class Clinica {
             }
         }
     
+    
         if (disponivel) {
             RelatorioGUI.exibirMensagem("Médico " + medico.getNomeMedico() + " está disponível.");
         } else {
             RelatorioGUI.exibirMensagem("Médico " + medico.getNomeMedico() + " está indisponível.");
         }
     }   
+
     }
