@@ -1,9 +1,9 @@
 package Clinica;
+
 public class Medico {
     private String nomeMedico;
     private int CRM;
     private boolean Disponivel;
-
 
     public Medico(String nomeMedico, int CRM, boolean Disponivel){
         this.nomeMedico = nomeMedico;
