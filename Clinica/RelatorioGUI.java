@@ -1,26 +1,38 @@
 package Clinica;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
 public class RelatorioGUI {
 
-    public static void mostrarRelatorio(List<Consulta> consultas) {
+    private static JTextArea textArea;
+
+    public static void mostrarRelatorio(List<Consulta> consultas) { 
+        // Criando o JFrame para a janela
+
         JFrame frame = new JFrame("Relatório de Consultas");
-        frame.setSize(500, 400);
+
+        frame.setSize(500, 500);
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
 
-        JTextArea textArea = new JTextArea();
+        // JTextArea para mostrar as informações
+
+        textArea = new JTextArea();
+        
         textArea.setEditable(false);
-        
 
+        // Scroll para o JTextArea
         JScrollPane scrollPane = new JScrollPane(textArea);
         frame.add(scrollPane, BorderLayout.CENTER);
-        
-        StringBuilder relatorio = new StringBuilder();
+
+        // Tornando a janela visível
+        frame.setVisible(true);
+
+        // Exibindo o relatório das consultas
+        StringBuilder relatorio = new StringBuilder("Consultas:\n");
         for (Consulta c : consultas) {
-            relatorio.append("Consulta:\n");
             relatorio.append("Paciente: ").append(c.getPaciente().getNomePaciente())
                     .append(" | Idade: ").append(c.getPaciente().getIdade())
                     .append(" | Tipo sanguíneo: ").append(c.getPaciente().getTipoSanguineo()).append("\n");
@@ -28,9 +40,12 @@ public class RelatorioGUI {
                     .append(" | CRM: ").append(c.getMedico().getCRM()).append("\n");
             relatorio.append("Data: ").append(c.getData()).append("\n\n");
         }
-        
+
+        // Adiciona o relatório ao JTextArea
         textArea.setText(relatorio.toString());
-        
-        frame.setVisible(true);
+    }
+
+    public static void exibirMensagem(String mensagem) {
+        textArea.append(mensagem + "\n");
     }
 }
