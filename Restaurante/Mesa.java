@@ -1,43 +1,32 @@
 public class Mesa {
-    private int numero;
+    private int numeroMesa;
     private boolean ocupada;
     private Pedido pedido;
 
-    public Mesa(int numero) {
-        this.numero = numero;
+    public Mesa(int numeroMesa) {
+        this.numeroMesa = numeroMesa;
         this.ocupada = false;
         this.pedido = new Pedido();
     }
 
+    public int getNumeroMesa() {
+        return this.numeroMesa;
+    }
+
     public boolean isOcupada() {
-        return ocupada;
+        return this.ocupada;
     }
 
     public void ocuparMesa() {
-        if (!ocupada) {
-            ocupada = true;
-            System.out.println("Mesa " + numero + " foi ocupada.");
-        } else {
-            System.out.println("Mesa " + numero + " já está ocupada.");
-        }
+        this.ocupada = true;
     }
 
     public void liberarMesa() {
-        if (ocupada) {
-            ocupada = false;
-            pedido = new Pedido(); // Limpa o pedido ao liberar a mesa
-            System.out.println("Mesa " + numero + " foi liberada.");
-        } else {
-            System.out.println("Mesa " + numero + " já está vazia.");
-        }
+        this.ocupada = false;
+        this.pedido = new Pedido();
     }
 
     public Pedido getPedido() {
-        return pedido;
-    }
-    
-    public int getNumero() {
-        return numero;
+        return this.pedido;
     }
 }
-

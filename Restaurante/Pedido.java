@@ -26,9 +26,19 @@ public class Pedido {
             System.out.println(item.getNome() + " - R$ " + item.getPreco());
         }
         System.out.println("Total: R$ " + calcularTotal());
-}
+    }
 
     public void setObservacao(String observacao) {
         throw new UnsupportedOperationException("Unimplemented method 'setObservacao'");
+    }
+
+    public Object getNumeroMesa() {
+
+        throw new UnsupportedOperationException("Unimplemented method 'getNumeroMesa'");
+    }
+
+    public ItemDoPedido[] getItens() {
+
+        throw new UnsupportedOperationException("Unimplemented method 'getItens'");
     }
 }

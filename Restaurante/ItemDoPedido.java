@@ -2,7 +2,6 @@ class ItemDoPedido {
     private String nome;
     private double preco;
     private String observacao;
-  
 
     public ItemDoPedido(String nome, double preco, String observacao) {
         this.nome = nome;
@@ -34,5 +33,8 @@ class ItemDoPedido {
         this.observacao = observacao;
     }
 
- 
+    public Object getQuantidade() {
+        throw new UnsupportedOperationException("Unimplemented method 'getQuantidade'");
+    }
+
 }
